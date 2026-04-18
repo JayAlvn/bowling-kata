@@ -7,7 +7,16 @@ public class Game {
     private int currentRoll = 0;
 
 
-    public void roll(int pins){
+    public void roll(int pins) {
+        if (pins < 0) {
+            throw new IllegalArgumentException("Pins cannot be negative");
+        }
+        if (pins > 10) {
+            throw new IllegalArgumentException("Pins cannot exceed 10");
+        }
+        if (currentRoll >= 20) {
+            throw new IllegalArgumentException("Too many rolls");
+        }
         rolls[currentRoll++] = pins;
     }
 
