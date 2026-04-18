@@ -19,7 +19,7 @@ public class Game {
             if (rolls[rollIndex] == 10) {
 
                 score += 10 + rolls[rollIndex + 1] + rolls[rollIndex + 2];
-                rollIndex += 1; 
+                rollIndex += 1;
             } else if (rolls[rollIndex] + rolls[rollIndex + 1] == 10) {
 
                 score += 10 + rolls[rollIndex + 2];
