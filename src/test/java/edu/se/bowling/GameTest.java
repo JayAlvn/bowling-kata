@@ -18,6 +18,7 @@ public class GameTest {
 
     @Test
     void allOnesScoresTwenty(){
+
         Game game = new Game();
 
         for (int i = 0; i < 20; i++){
@@ -25,5 +26,19 @@ public class GameTest {
         }
 
         assertEquals(20, game.score());
+    }
+
+    @Test
+    void oneSpareScoresSixteen(){
+        Game game = new Game();
+        game.roll(5);
+        game.roll(5);
+        game.roll(3);
+
+        for (int i = 0; i < 17; i++){
+            game.roll(0);
+        }
+
+        assertEquals(16, game.score());
     }
 }
