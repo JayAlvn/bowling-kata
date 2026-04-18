@@ -2,6 +2,7 @@ package edu.se.bowling;
 
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class GameTest {
 
@@ -58,8 +59,30 @@ public class GameTest {
     void perfectGameScoresThreeHundred() {
         Game game = new Game();
         for (int i = 0; i < 12; i++) {
-            game.roll(10); 
+            game.roll(10);
         }
         assertEquals(300, game.score());
+    }
+
+    @Test
+    void rollNegativePinsThrowsException() {
+        Game game = new Game();
+        assertThrows(IllegalArgumentException.class, () -> game.roll(-1));
+    }
+
+    @Test
+    void rollMoreThanTenPinsThrowsException() {
+        Game game = new Game();
+        assertThrows(IllegalArgumentException.class, () -> game.roll(11));
+    }
+
+    @Test
+    void rollMoreThanTwentyTimesThrowsException() {
+        Game game = new Game();
+        assertThrows(IllegalArgumentException.class, () -> {
+            for (int i = 0; i < 21; i++) {
+                game.roll(0);
+            }
+        });
     }
 }
