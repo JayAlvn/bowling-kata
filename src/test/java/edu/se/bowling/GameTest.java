@@ -41,4 +41,16 @@ public class GameTest {
 
         assertEquals(16, game.score());
     }
+
+    @Test
+    void oneStrikeScoresThirty() {
+        Game game = new Game();
+        game.roll(10);
+        game.roll(3);
+        game.roll(4);
+        for (int i = 0; i < 16; i++) {
+            game.roll(0);
+        }
+        assertEquals(24, game.score());
+    }
 }
